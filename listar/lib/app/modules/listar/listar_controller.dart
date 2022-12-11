@@ -12,7 +12,7 @@ class ListarController extends GetxController {
     libros.isEmpty ? isLoad.value = true : isLoad.value = false;
   }
 
-  loadLibros() {
+  loadLibros() async {
     Libro l = Libro(
         id: 1,
         nombre: "Mi patito",
@@ -61,5 +61,7 @@ class ListarController extends GetxController {
     libros.add(l2);
     libros.add(l3);
     libros.add(l4);
+
+    await ListarApi().getHttp();
   }
 }

@@ -8,7 +8,7 @@ class ListarApi {
     //base de url desarrollo
     //dio.options.baseUrl = 'http://localhost:8080/api';
     //base url Aprodución
-    dio.options.baseUrl = 'https://difusionvi.ups.edu.ec/fastapi';
+    dio.options.baseUrl = 'http://192.168.1.27:8080/demoapp';
     //Configurar headers
     dio.options.headers = {
       // 'x-token': ' Aqui va el token',
@@ -19,8 +19,8 @@ class ListarApi {
   Future<List<Libro>?> getList() async {
     var result;
     try {
-      result = await dio.post(
-        '/upload',
+      result = await dio.get(
+        '/rs/libros',
       );
     } on DioError catch (e) {
       if (e.response!.statusCode == 400) {
@@ -33,9 +33,20 @@ class ListarApi {
         throw ('Error en el Upload Image');
       }
     }
-    return (result['data']['libro'] as List)
+    print(result);
+    return (result as List)
         .map((e) => Libro.fromJson(e))
         .toList()
         .cast<Libro>();
+  }
+
+  Future getHttp() async {
+    try {
+      print("Entre");
+      var response = await Dio().get('');
+      print(response);
+    } catch (e) {
+      print(e);
+    }
   }
 }
