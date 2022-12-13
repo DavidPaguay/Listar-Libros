@@ -8,7 +8,7 @@ class ListarApi {
     //base de url desarrollo
     //dio.options.baseUrl = 'http://localhost:8080/api';
     //base url Aprodución
-    dio.options.baseUrl = 'http://192.168.1.27:8080/demoapp';
+    dio.options.baseUrl = 'http://192.168.1.27:8080/demoapp/rs';
     //Configurar headers
     dio.options.headers = {
       // 'x-token': ' Aqui va el token',
@@ -20,7 +20,7 @@ class ListarApi {
     var result;
     try {
       result = await dio.get(
-        '/rs/libros',
+        '/libros',
       );
     } on DioError catch (e) {
       if (e.response!.statusCode == 400) {
