@@ -14,7 +14,7 @@ class ListarPage extends GetView<ListarController> {
           Padding(
             padding: const EdgeInsets.all(30.0),
             child: ElevatedButton(
-                onPressed: () => controller.loadLibros(),
+                onPressed: () => controller.getAllBooks(),
                 child: const Text("Listar")),
           ),
           Center(
@@ -49,8 +49,7 @@ class ListarPage extends GetView<ListarController> {
                                         const Color.fromARGB(255, 3, 3, 3),
                                     title: Text(
                                         "${controller.libros[index].nombre.toString()} Numero de Pagina:  ${controller.libros[index].numeroPaginas.toString().obs}"),
-                                    subtitle: Text(
-                                        " Autor: ${controller.libros[index].autor!.nombre.toString()}"),
+                                  
                                   ),
                                 ),
                               ),
