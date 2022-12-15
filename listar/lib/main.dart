@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: "Libreria Ramon el Dragon",
+      title: "Tienda de Celulares Ramon el Dragon",
       defaultTransition: Transition.fadeIn,
       debugShowCheckedModeBanner: false,
       getPages: AppPages.pages,

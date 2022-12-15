@@ -1,16 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:listar/app/data/model/autor.dart';
-import 'package:listar/app/data/model/libro.dart';
+import 'package:listar/app/data/model/celular.dart';
 import 'package:listar/app/data/services/remote/listar_Api.dart';
 
 class ListarController extends GetxController {
-  RxList<Libro> libros = <Libro>[].obs;
+  RxList<Celular> celulares = <Celular>[].obs;
+  Rx<Celular> celular = Celular().obs;
   RxBool isLoad = false.obs;
+  var formKey = GlobalKey<FormState>();
 
   getAllBooks() async {
-    libros.value = (await ListarApi().getList())!;
-    libros.isEmpty ? isLoad.value = true : isLoad.value = false;
+    celulares.value = (await ListarApi().getList())!;
+    celulares.isEmpty ? isLoad.value = true : isLoad.value = false;
   }
-
-
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:listar/app/modules/listar/listar_controller.dart';
+import 'package:responsive_grid/responsive_grid.dart';
 
 class ListarPage extends GetView<ListarController> {
   const ListarPage({super.key});
@@ -9,6 +10,17 @@ class ListarPage extends GetView<ListarController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Libros Disponibles')),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 40.0),
+        child: FloatingActionButton(
+          tooltip: 'Crear'.tr,
+          elevation: 20,
+          onPressed: () {
+            print("Hola");
+          },
+          child: const Icon(Icons.add),
+        ),
+      ),
       body: Column(
         children: [
           Padding(
@@ -25,8 +37,8 @@ class ListarPage extends GetView<ListarController> {
                     child: SizedBox(
                       height: 500,
                       child: ListView.builder(
-                          itemCount: controller.libros.isNotEmpty
-                              ? controller.libros.length
+                          itemCount: controller.celulares.isNotEmpty
+                              ? controller.celulares.length
                               : 0,
                           itemBuilder: (BuildContext context, int index) {
                             return Padding(
@@ -48,8 +60,9 @@ class ListarPage extends GetView<ListarController> {
                                     textColor:
                                         const Color.fromARGB(255, 3, 3, 3),
                                     title: Text(
-                                        "${controller.libros[index].nombre.toString()} Numero de Pagina:  ${controller.libros[index].numeroPaginas.toString().obs}"),
-                                  
+                                        "${controller.celulares[index].nombre.toString()} Precio:  ${controller.celulares[index].precio.toString().obs}"),
+                                    subtitle: Text(
+                                        "Marca: ${controller.celulares[index].marca}"),
                                   ),
                                 ),
                               ),
@@ -63,4 +76,33 @@ class ListarPage extends GetView<ListarController> {
       ),
     );
   }
+
+  Widget upsert() {
+    return Obx(
+      () => Form(
+        key: controller.formKey,
+        child: SizedBox(
+          width: MediaQuery.of(Get.context!).size.width,
+          child: ResponsiveGridRow(
+            children: [
+              ResponsiveGridCol(
+                lg: 12,
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                    ],
+                  ),
+                ),
+              ),
+             
+           
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+
 }
