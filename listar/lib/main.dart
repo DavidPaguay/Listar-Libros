@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       defaultTransition: Transition.fadeIn,
       debugShowCheckedModeBanner: false,
       getPages: AppPages.pages,
-      initialRoute: AppRoutes.LISTAR,
+      initialRoute: AppRoutes.HOME,
     );
   }
 }

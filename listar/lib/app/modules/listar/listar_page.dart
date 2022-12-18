@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:listar/app/modules/listar/listar_controller.dart';
-import 'package:responsive_grid/responsive_grid.dart';
+import 'package:listar/app/routes/app_routes.dart';
 
 class ListarPage extends GetView<ListarController> {
   const ListarPage({super.key});
@@ -9,7 +9,14 @@ class ListarPage extends GetView<ListarController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Libros Disponibles')),
+      appBar: AppBar(title: const Text('Libros Disponibles'), actions: [
+        IconButton(
+            onPressed: () => Get.offNamedUntil(AppRoutes.HOME, (_) => false),
+            icon: const Icon(
+              Icons.arrow_back_ios_rounded,
+              color: Colors.black,
+            ))
+      ]),
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 40.0),
         child: FloatingActionButton(
@@ -76,33 +83,4 @@ class ListarPage extends GetView<ListarController> {
       ),
     );
   }
-
-  Widget upsert() {
-    return Obx(
-      () => Form(
-        key: controller.formKey,
-        child: SizedBox(
-          width: MediaQuery.of(Get.context!).size.width,
-          child: ResponsiveGridRow(
-            children: [
-              ResponsiveGridCol(
-                lg: 12,
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                    ],
-                  ),
-                ),
-              ),
-             
-           
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-
 }

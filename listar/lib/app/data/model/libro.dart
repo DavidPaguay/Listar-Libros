@@ -1,5 +1,4 @@
 import 'package:listar/app/data/model/abstract_model.dart';
-import 'package:listar/app/data/model/autor.dart';
 
 class Libro extends AbstractModel<String> {
   Libro({

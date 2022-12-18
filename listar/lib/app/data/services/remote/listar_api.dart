@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:listar/app/data/model/celular.dart';
-import 'package:listar/app/data/model/libro.dart';
 
 class ListarApi {
   static Dio dio = Dio();
@@ -25,12 +24,13 @@ class ListarApi {
         .cast<Celular>();
   }
 
-  Future setLibro(Celular celular) async {
+  Future setCelular(Celular celular) async {
     var result;
     try {
       result = await dio.post('/guardar', data: {celular.toJson()});
     } on DioError catch (e) {
       print(e);
     }
+    return result;
   }
 }

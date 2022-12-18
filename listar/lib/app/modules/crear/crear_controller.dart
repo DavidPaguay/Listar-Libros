@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:listar/app/data/model/celular.dart';
 import 'package:listar/app/data/services/remote/listar_api.dart';
 
-class ListarController extends GetxController {
+class CrearController extends GetxController {
   RxList<Celular> celulares = <Celular>[].obs;
   Rx<Celular> celular = Celular().obs;
   RxBool isLoad = false.obs;
@@ -14,5 +14,8 @@ class ListarController extends GetxController {
     celulares.isEmpty ? isLoad.value = true : isLoad.value = false;
   }
 
-  
+  guardarCelular() async {
+    print(celular.toJson());
+    var res = await ListarApi().setCelular(celular.value);
+  }
 }
